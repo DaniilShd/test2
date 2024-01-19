@@ -1,7 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/template/html/v2"
+)
 
 func main() {
-	fmt.Println("123")
+
+	engine := html.New("../templates", ".html")
+
+	app := fiber.New(fiber.Config{
+		Views: engine,
+	})
+
+	app.Get("/", handlers.test)
+
+	log.Fatal(app.Listen(":3000"))
 }
