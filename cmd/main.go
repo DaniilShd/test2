@@ -20,15 +20,6 @@ func init() {
 	}
 }
 
-// const (
-// 	portNumber, er := os.LookupEnv("PORT_NUMBER")
-// 	passwordDB     = "root"
-// 	host           = "localhost"
-// 	nameDB         = "persons"
-// 	userDB         = "postgres"
-// 	portDB         = "5432"
-// )
-
 func main() {
 
 	db, err := run()
