@@ -2,7 +2,6 @@ package dbrepo
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/DaniilShd/test2/models"
@@ -208,10 +207,6 @@ func (m *postgresDBRepo) GetPersonsByOffset(filter *models.Filter) (*[]models.Pe
 		}
 		filter.Set -= 1
 	}
-
-	//querySelectByFilter = querySelectByFilter + ` OFFSET=` + filter.Offset + ` LIMIT=` + filter.Limit
-
-	fmt.Println(querySelectByFilter)
 
 	rows, err := m.DB.QueryContext(ctx, querySelectByFilter)
 	if err != nil {

@@ -10,7 +10,6 @@ import (
 	"github.com/DaniilShd/test2/pkg/api/filter"
 	"github.com/DaniilShd/test2/pkg/api/pagination"
 
-	"github.com/DaniilShd/test2/internal/config"
 	"github.com/DaniilShd/test2/internal/driver"
 	"github.com/DaniilShd/test2/internal/repository"
 	"github.com/DaniilShd/test2/internal/repository/dbrepo"
@@ -21,8 +20,7 @@ import (
 var Repo *Repository
 
 type Repository struct {
-	App *config.AppConfig
-	DB  repository.DatabaseRepo
+	DB repository.DatabaseRepo
 }
 
 func NewRepository(db *driver.DB) *Repository {
@@ -51,8 +49,6 @@ func (m *Repository) GetPersons(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	fmt.Println(persons)
 
 	return c.Render("index", fiber.Map{
 		"Flter":   filter,
